@@ -712,13 +712,14 @@ def _header(
         PAGE_HEADER_COLUMN_WEIGHTS,
         gap=PAGE_HEADER_COLUMN_GAP,
         vertical_alignment="bottom",
-        
     )
     with icon_column:
         # Streamlit 1.58 does not yet expose an ``alt`` argument on ``st.image``. The adjacent
         # semantic page heading provides the same page name; retain ``icon_alt`` in configuration
         # so it can be passed natively when the deployed Streamlit version supports it.
-        st.image(page.icon_path)
+        # Pass bytes instead of a filesystem path so rendering is independent of the deployment
+        # process's working directory and Streamlit's handling of local media paths.
+        st.image(page.icon_path.read_bytes(), width=PAGE_HEADER_ICON_WIDTH)
     with title_column:
         st.markdown(page_title_html(content, navigation), unsafe_allow_html=True)
     st.markdown(page_lead_html(content, navigation), unsafe_allow_html=True)
@@ -2752,9 +2753,14 @@ def main() -> None:
         initial_sidebar_state="auto",
     )
     if app_content.logo_path is not None:
+        logo_icon = (
+            app_content.logo_icon_path.read_bytes()
+            if app_content.logo_icon_path is not None
+            else None
+        )
         st.logo(
-            app_content.logo_path,
-            icon_image=app_content.logo_icon_path
+            app_content.logo_path.read_bytes(),
+            icon_image=logo_icon,
         )
     _load_css()
     try:
