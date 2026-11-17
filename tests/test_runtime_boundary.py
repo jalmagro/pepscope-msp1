@@ -50,6 +50,18 @@ def test_runtime_files_have_no_source_repository_path() -> None:
     assert offenders == []
 
 
+def test_streamlit_media_server_dependencies_are_compatible() -> None:
+    """Prevent Cloud builds from resolving an incompatible Starlette release."""
+
+    requirements = {
+        line.strip()
+        for line in (ROOT / "requirements.txt").read_text(encoding="utf-8").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    }
+    assert "streamlit==1.58.0" in requirements
+    assert "starlette==1.4.1" in requirements
+
+
 def test_configured_images_resolve_inside_the_app() -> None:
     path = ROOT / "app/config/app-content.json"
     content = json.loads(path.read_text(encoding="utf-8"))
