@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Mutation comparison",
+  "intro": "This table lists every non-reference amino acid observed anywhere in the database for the selected interval (i.e., observed in at least one sample in the DB). The currently selected group is shown first, followed by every other stored group in database order.",
+  "frequency": "Mutation frequency is the allele count divided by number of resolved calls at that locus. A mixed call such as [A/V] contributes half to A and half to V. Missing and unresolved calls do not enter the allele frequency denominator. A displayed zero means the mutation catalogue contains the mutation but the allele was not observed in that group. A blank value means no callable data was available.",
+  "missing": "When enabled, each missing column is the fraction of all samples in that group with a missing call ('-') at the mutation locus. Missingness is shown beside allele frequency because a high or low observed mutation frequency is less informative when much of the group is uncalled.",
+  "canonical_id": "Mutation identifiers use reference residue, one-based 3D7 amino-acid coordinate, and alternate residue, for example A123V.",
+  "warning": "Country and population columns are independent summaries and must not be added together. Small groups and low callable denominators can produce unstable frequencies."
+}

@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Allele composition (all samples)",
+  "intro": "Each vertical stack represents one amino-acid coordinate. Residues heights are their fractional counts divided by every sample in the selected group, so the complete stack has a natural scale from zero to one.",
+  "mixed": "A mixed call such as [A/V] contributes half of one sample to A and half to V. The logo never draws [A/V] as a new residue and never counts it as two samples.",
+  "uncalled": "Light-grey empty mass is the fraction not assigned to an amino acid. It includes missing or unresolved calls, making poor callability visible instead of renormalizing the residues to fill the stack.",
+  "consensus": "The consensus at a position is the residue with the largest all-sample height. A tie prefers the 3D7 residue when it is tied, then uses alphabetical order. Consensus letters are bold (in the static render, not plotly) and identified in interactive hover text (in plotly).",
+  "interpretation": "A nearly full single-color stack supports a dominant residue in the selected cohort. A short colored stack with a large grey segment is weak calling evidence, not strong conservation."
+}

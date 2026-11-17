@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0.0",
+  "title": "3D structure context",
+  "intro": "Use the 3D viewer to see where the selected MSP1 block or peptide sits on a reference protein structure. Grey shows the modeled protein chain, tomato marks the residues that correspond to the selected interval, and gold highlights amino-acid differences between 3D7 and the most common complete haplotype or peptide.",
+  "selection": "The viewer automatically chooses a structure that covers at least 80% of the selected region. Suitable experimental structures are preferred when available; otherwise, the pinned full-length AlphaFold model is used. You can also inspect the other reviewed structures and compare their coverage and source.",
+  "interpretation": "Treat the structure as a spatial reference for locating sequence variation. Gold residues show where the most common sequence differs from 3D7 on the reference structure, but they do not predict whether those substitutions change protein folding, stability, antibody recognition, or binding.",
+  "confidence": "For experimental structures, the viewer reports the experimental method and resolution when available. For AlphaFold models, residue-level pLDDT scores indicate how confident the model is in the local structure. These measures describe confidence in the structural coordinates only; they do not indicate whether a region is a good vaccine target.",
+  "fallback": "If the 3D viewer cannot be displayed, the mapping and mismatch tables still provide the underlying sequence-to-structure information. Differences are shown on the structure only when a reviewed residue mapping is available, so unmapped residues are never placed approximately."
+}

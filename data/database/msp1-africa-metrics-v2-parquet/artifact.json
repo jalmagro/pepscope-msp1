@@ -1,0 +1,2085 @@
+{
+  "artifact_format_version": "1.0.0",
+  "build_profile_id": "msp1-africa-v2",
+  "compression": "zstd",
+  "compression_level": 6,
+  "created_at_utc": "2026-11-11T12:20:35.780500+00:00",
+  "dataset_id": "msp1-africa-metrics-v2-parquet",
+  "dataset_sha256": "97e46d356b4b035946e7391289a15674d131c6031b0093c4243b55246a2adf61",
+  "default_stratum_type": "continent",
+  "default_stratum_value": "Africa",
+  "duckdb_min_version": "1.4.0",
+  "gene_identifier": "PF3D7_0930300",
+  "max_file_bytes": 20000000,
+  "scientific_schema_version": "2.0.0",
+  "storage_backend": "parquet_duckdb",
+  "tables": {
+    "analysis_parameter": {
+      "column_names": [
+        "run_id",
+        "parameter_name",
+        "value_text",
+        "value_type",
+        "unit",
+        "description"
+      ],
+      "column_types": [
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1,
+            "window_step"
+          ],
+          "key_min": [
+            1,
+            "ambiguity_policy"
+          ],
+          "path": "tables/analysis_parameter/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "cf77a42adf52549c086f495decdd26a9ab963bbd224f8fd4e3169d1fc0d0b93b",
+          "size_bytes": 5765
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "run_id",
+        "parameter_name"
+      ],
+      "row_count": 17,
+      "schema_fingerprint": "f517978a9e984ea338c3f98cb1b66ddb9dba28b9aecb4ffdc9a1ff5a24575e4f"
+    },
+    "analysis_run": {
+      "column_names": [
+        "run_id",
+        "schema_version",
+        "created_at_utc",
+        "project_git_commit",
+        "project_git_dirty",
+        "package_version",
+        "sqlite_version",
+        "python_version",
+        "status",
+        "notes"
+      ],
+      "column_types": [
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/analysis_run/part-00000.parquet",
+          "row_count": 1,
+          "sha256": "40108734334bbebb88a46a192c3e89f882914ee020c1f3376af4feab99675700",
+          "size_bytes": 4450
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "run_id"
+      ],
+      "row_count": 1,
+      "schema_fingerprint": "429a75833269ca36127219ca391ca5aee97106f497376196b2c86dd6dc1d0b68"
+    },
+    "block": {
+      "column_names": [
+        "block_id",
+        "gene_id",
+        "block_number",
+        "block_name",
+        "aa_start",
+        "aa_end",
+        "aa_length",
+        "reference_sequence_id"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            17
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/block/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "248f3f1edb848a9855df52e654e7f6be9d9fbd63e276d7d972d32cecf852fbd6",
+          "size_bytes": 3773
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "block_id"
+      ],
+      "row_count": 17,
+      "schema_fingerprint": "d250f199ae46a183af024ede42141758f825502f2a4beed860012ac08ab657a6"
+    },
+    "block_callability_histogram": {
+      "column_names": [
+        "stratum_id",
+        "block_id",
+        "bin_index",
+        "bin_left",
+        "bin_right",
+        "right_inclusive",
+        "sample_count",
+        "sample_fraction",
+        "n_samples"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26,
+            17,
+            19
+          ],
+          "key_min": [
+            1,
+            1,
+            0
+          ],
+          "path": "tables/block_callability_histogram/part-00000.parquet",
+          "row_count": 8840,
+          "sha256": "0add13b3b4158fd853225f46ebe60d577f20a08977519b31a37c7cb66ffb2038",
+          "size_bytes": 23382
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id",
+        "block_id",
+        "bin_index"
+      ],
+      "row_count": 8840,
+      "schema_fingerprint": "14da271239292674525797cd78e6048a051743daf29aa2bf877065fb6bfffefa"
+    },
+    "block_metric": {
+      "column_names": [
+        "stratum_id",
+        "block_id",
+        "top_exact_sequence_id",
+        "allelic_consensus_sequence_id",
+        "modal_all_call_sequence_id",
+        "all_call_consensus_sequence_id",
+        "n_samples",
+        "n_total_calls",
+        "n_missing_calls",
+        "n_unresolved_calls",
+        "n_non_callable_calls",
+        "n_callable_calls",
+        "n_mixed_callable_calls",
+        "n_unambiguous_canonical_calls",
+        "mean_sample_missing_fraction",
+        "mean_sample_unresolved_fraction",
+        "mean_sample_non_callable_fraction",
+        "mean_sample_call_rate",
+        "median_sample_call_rate",
+        "mean_sample_mixed_fraction_callable",
+        "pooled_mixed_fraction_callable",
+        "fraction_samples_missing_ge_1",
+        "fraction_samples_missing_ge_5",
+        "fraction_samples_missing_gt_5",
+        "fraction_samples_non_callable_ge_1",
+        "fraction_samples_mixed_ge_1",
+        "n_fully_callable_sequences",
+        "n_exact_haplotype_observations",
+        "n_unique_exact_haplotypes",
+        "n_singleton_exact_haplotypes",
+        "singleton_fraction_unique_exact",
+        "top_exact_sequence_frequency",
+        "allelic_consensus_exact_frequency",
+        "modal_all_call_sequence_frequency",
+        "all_call_consensus_sequence_frequency",
+        "reference_haplotype_frequency_exact",
+        "top_1_cumulative_frequency",
+        "top_2_cumulative_frequency",
+        "top_3_cumulative_frequency",
+        "top_5_cumulative_frequency",
+        "top_10_cumulative_frequency",
+        "haplotype_diversity_hd",
+        "shannon_diversity",
+        "effective_haplotypes_shannon",
+        "effective_haplotypes_simpson",
+        "haplotype_frequency_gini",
+        "pielou_evenness",
+        "mean_pairwise_aa_distance",
+        "mean_normalized_pairwise_aa_distance",
+        "n_sites_polymorphic_any",
+        "fraction_sites_polymorphic_any",
+        "n_sites_polymorphic_ge_0_01",
+        "fraction_sites_polymorphic_ge_0_01",
+        "n_sites_polymorphic_ge_0_05",
+        "fraction_sites_polymorphic_ge_0_05",
+        "n_sites_with_singleton_residue",
+        "fraction_sites_with_singleton_residue"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1,
+            17
+          ],
+          "key_min": [
+            1,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=1/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "5b19eb7b1ad213ec541e59d3ed309f45bc207138cf70667e499004b4782c99f7",
+          "size_bytes": 33372
+        },
+        {
+          "key_max": [
+            2,
+            17
+          ],
+          "key_min": [
+            2,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=2/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "6871908505f225864147b3227ce976577665eeb289ebdd5815e9740badcf8bd7",
+          "size_bytes": 32840
+        },
+        {
+          "key_max": [
+            3,
+            17
+          ],
+          "key_min": [
+            3,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=3/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "626912e3ec52ca0a673e5e0d6b3c542383f5560ec7d61957cb30cfa9a525ad47",
+          "size_bytes": 33116
+        },
+        {
+          "key_max": [
+            4,
+            17
+          ],
+          "key_min": [
+            4,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=4/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "af185d0279257252fc7f7600573134a547efe72f318dac75940e6ec50412ac3a",
+          "size_bytes": 32325
+        },
+        {
+          "key_max": [
+            5,
+            17
+          ],
+          "key_min": [
+            5,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=5/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "0adc02fff2bc1caa757c62a91eee7c4cdfe596378c64dd5ff88837b1fc07ad77",
+          "size_bytes": 33249
+        },
+        {
+          "key_max": [
+            6,
+            17
+          ],
+          "key_min": [
+            6,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=6/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "1b4f47bb099cbaf0a2001d47e69be65e7ae9422975569ba9a527dddd1a5f42cd",
+          "size_bytes": 32012
+        },
+        {
+          "key_max": [
+            7,
+            17
+          ],
+          "key_min": [
+            7,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=7/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "ba6c519ee6167ee9acd8dcb61d100a4ffa762ccf256fa5f2f27d54f31a764503",
+          "size_bytes": 30942
+        },
+        {
+          "key_max": [
+            8,
+            17
+          ],
+          "key_min": [
+            8,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=8/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "a7069d912d2439ef94a74f55a021809ee25d911d29b782a1e015e459171cee10",
+          "size_bytes": 32177
+        },
+        {
+          "key_max": [
+            9,
+            17
+          ],
+          "key_min": [
+            9,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=9/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "738c021cca3fec10d6bf9122956c6e836159cb5b3d5f823412a5e2d64b41c367",
+          "size_bytes": 31755
+        },
+        {
+          "key_max": [
+            10,
+            17
+          ],
+          "key_min": [
+            10,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=10/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "f079f29d5b12b7441c5ee434f7e4bf6eab833d0a762598bb908b339ed182fa33",
+          "size_bytes": 32840
+        },
+        {
+          "key_max": [
+            11,
+            17
+          ],
+          "key_min": [
+            11,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=11/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "21ded955d61b8204fa4b145f26ba2d33f8189169cb48968a1e60010140e36699",
+          "size_bytes": 30579
+        },
+        {
+          "key_max": [
+            12,
+            17
+          ],
+          "key_min": [
+            12,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=12/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "c7c5ff4ec1b147a2aff8b99a8baba290c0f525bc6a5eb9441f707e5b30164d9c",
+          "size_bytes": 31592
+        },
+        {
+          "key_max": [
+            13,
+            17
+          ],
+          "key_min": [
+            13,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=13/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "2c7b143fabac0063b3fe465c8971efafd6abeeed3006f8ee33b4a453f6062e7d",
+          "size_bytes": 32726
+        },
+        {
+          "key_max": [
+            14,
+            17
+          ],
+          "key_min": [
+            14,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=14/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "3f406f3cadc565932edf1add895a349834dc20da687fa7354fbd43e1ec3114d4",
+          "size_bytes": 33213
+        },
+        {
+          "key_max": [
+            15,
+            17
+          ],
+          "key_min": [
+            15,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=15/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "dcb70dc4c5bd5c5d24069f98c73d7bb283a008c582d692532959eaee9b4c363d",
+          "size_bytes": 32090
+        },
+        {
+          "key_max": [
+            16,
+            17
+          ],
+          "key_min": [
+            16,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=16/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "929b4ab9bc21b4adc8e784d8420024b6acba8fb690ac88832a5b1dcdfd62b382",
+          "size_bytes": 32690
+        },
+        {
+          "key_max": [
+            17,
+            17
+          ],
+          "key_min": [
+            17,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=17/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "d0ad131c2933c145f5050ea025eb4e75dc14a7ea4856bcac4a80a13d36821ff1",
+          "size_bytes": 30746
+        },
+        {
+          "key_max": [
+            18,
+            17
+          ],
+          "key_min": [
+            18,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=18/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "1b37aa06ff76c81bd3ba2a29410038210945d7dd7ef4cf375716ba037d3e5c51",
+          "size_bytes": 31732
+        },
+        {
+          "key_max": [
+            19,
+            17
+          ],
+          "key_min": [
+            19,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=19/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "28a63b489371bc276f177c904ac9e674583e0e98d0cea499c9fe6dcc8e270945",
+          "size_bytes": 33008
+        },
+        {
+          "key_max": [
+            20,
+            17
+          ],
+          "key_min": [
+            20,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=20/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "27c468644bac9b53dce7ac4ee453a1397495055ef1ab71a9d9a8036570b487c7",
+          "size_bytes": 31807
+        },
+        {
+          "key_max": [
+            21,
+            17
+          ],
+          "key_min": [
+            21,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=21/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "e8bb141e2598b852b38857f03294c627be29a4a9eca8579d9417210b93bd9b1d",
+          "size_bytes": 32766
+        },
+        {
+          "key_max": [
+            22,
+            17
+          ],
+          "key_min": [
+            22,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=22/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "b9b69f656af313341b9a69d9ed4c88797bc4137f7fcc04ecc2ed58281d67cdf8",
+          "size_bytes": 32355
+        },
+        {
+          "key_max": [
+            23,
+            17
+          ],
+          "key_min": [
+            23,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=23/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "e5f434e26a4a9e68768e9a6d11ed34139fd91f692420ed5b3f6db84beccdd18d",
+          "size_bytes": 31899
+        },
+        {
+          "key_max": [
+            24,
+            17
+          ],
+          "key_min": [
+            24,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=24/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "03dfed89b4b845655259ee588fbd699cea501e3ab665f0b344e654e9bbaea747",
+          "size_bytes": 32001
+        },
+        {
+          "key_max": [
+            25,
+            17
+          ],
+          "key_min": [
+            25,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=25/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "fd32f0b5c6c4f2e231caccdbbbe0c9d6573ebee9b270ddc86476c0ec98776764",
+          "size_bytes": 32714
+        },
+        {
+          "key_max": [
+            26,
+            17
+          ],
+          "key_min": [
+            26,
+            1
+          ],
+          "path": "tables/block_metric/stratum_id=26/part-00000.parquet",
+          "row_count": 17,
+          "sha256": "e2d3039ee4dc76c6095053a919e8aa9a99a5e1cf8d37bce81d1a0915576678ec",
+          "size_bytes": 30556
+        }
+      ],
+      "partition_columns": [
+        "stratum_id"
+      ],
+      "primary_key": [
+        "stratum_id",
+        "block_id"
+      ],
+      "row_count": 442,
+      "schema_fingerprint": "1781eb8482cb3a9bd58fb0704413def4a8b735ae143743549b3edb9ff5fdeb1a"
+    },
+    "block_sequence_frequency": {
+      "column_names": [
+        "stratum_id",
+        "block_id",
+        "sequence_scope",
+        "sequence_rank",
+        "sequence_id",
+        "observation_count",
+        "observation_denominator",
+        "frequency",
+        "cumulative_frequency",
+        "is_singleton",
+        "is_reference_sequence",
+        "is_allelic_consensus_sequence",
+        "is_all_call_consensus_sequence",
+        "distance_to_reference"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26,
+            17,
+            "exact",
+            3
+          ],
+          "key_min": [
+            1,
+            1,
+            "all_call",
+            1
+          ],
+          "path": "tables/block_sequence_frequency/part-00000.parquet",
+          "row_count": 128960,
+          "sha256": "ee507ea80fe8b4b74acba5621cf54f85302eec21b206145f80628ddc3606c24c",
+          "size_bytes": 832072
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id",
+        "block_id",
+        "sequence_scope",
+        "sequence_rank"
+      ],
+      "row_count": 128960,
+      "schema_fingerprint": "3e19d74c9718249b0ff617497118cac7362e9664d46ff0e3cebfd175cf3a8d64"
+    },
+    "gene": {
+      "column_names": [
+        "gene_id",
+        "gene_identifier",
+        "gene_name",
+        "aa_start",
+        "aa_end",
+        "aa_length",
+        "reference_name",
+        "reference_sequence_id"
+      ],
+      "column_types": [
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/gene/part-00000.parquet",
+          "row_count": 1,
+          "sha256": "0ae10d0f8391aa8da61f108e948a11bce06d90c26ebdfe87bf795c60923fb822",
+          "size_bytes": 3300
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "gene_id"
+      ],
+      "row_count": 1,
+      "schema_fingerprint": "ac4945ee841008a94b2d91db2776720ea16720b614d13735cedf754b4bd7793f"
+    },
+    "locus": {
+      "column_names": [
+        "locus_id",
+        "gene_id",
+        "block_id",
+        "aa_position",
+        "gene_offset",
+        "block_offset",
+        "reference_residue"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1720
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/locus/part-00000.parquet",
+          "row_count": 1720,
+          "sha256": "2ad480981dc5609e8eaf7e99e0cb46cc511230047bb108139a6a89a9d4bc8485",
+          "size_bytes": 17201
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "locus_id"
+      ],
+      "row_count": 1720,
+      "schema_fingerprint": "28abb80c5ae308eae39f0e72e20a782eda3a271a4d7bf2decd3ab0c45eddc039"
+    },
+    "locus_allele_frequency": {
+      "column_names": [
+        "stratum_id",
+        "locus_id",
+        "residue",
+        "fractional_count",
+        "fractional_frequency",
+        "unambiguous_count",
+        "unambiguous_frequency",
+        "sample_presence_count",
+        "fractional_rank",
+        "is_reference_residue",
+        "is_consensus_residue"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26,
+            1720,
+            "I"
+          ],
+          "key_min": [
+            1,
+            1,
+            "M"
+          ],
+          "path": "tables/locus_allele_frequency/part-00000.parquet",
+          "row_count": 50610,
+          "sha256": "a6cb41eda8519a37d22a1a7881d01ea0297dd4cdd037fcc2fb229be8c5fdf355",
+          "size_bytes": 367663
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id",
+        "locus_id",
+        "residue"
+      ],
+      "row_count": 50610,
+      "schema_fingerprint": "e2c2b2d212271897d977d653df322fbc42bd7b0ca530ea5dc0177cdec30953d7"
+    },
+    "locus_metric": {
+      "column_names": [
+        "stratum_id",
+        "locus_id",
+        "consensus_residue",
+        "consensus_residues",
+        "second_residue",
+        "n_samples",
+        "n_missing",
+        "n_unresolved",
+        "n_non_callable",
+        "n_callable",
+        "n_unambiguous_canonical",
+        "n_mixed_callable",
+        "n_non_allelic_ambiguous",
+        "call_rate",
+        "missing_rate",
+        "unresolved_rate",
+        "non_callable_rate",
+        "mixed_fraction_callable",
+        "mixed_fraction_all_samples",
+        "allele_denominator_fractional",
+        "allele_denominator_unambiguous",
+        "consensus_frequency",
+        "second_residue_frequency",
+        "reference_residue_frequency",
+        "consensus_tied",
+        "contains_reference_residue",
+        "n_observed_residues",
+        "n_residues_frequency_ge_0_01",
+        "n_residues_frequency_ge_0_05",
+        "expected_heterozygosity",
+        "shannon_entropy",
+        "normalized_entropy_observed",
+        "normalized_entropy_20",
+        "allele_frequency_gini",
+        "pielou_evenness",
+        "is_polymorphic_any",
+        "is_polymorphic_ge_0_01",
+        "is_polymorphic_ge_0_05",
+        "has_singleton_residue"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26,
+            1720
+          ],
+          "key_min": [
+            1,
+            1
+          ],
+          "path": "tables/locus_metric/part-00000.parquet",
+          "row_count": 44720,
+          "sha256": "83eba6c179172392375356882aa4a3625d2f5b5b3dd860c213c858455828e3f7",
+          "size_bytes": 845497
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id",
+        "locus_id"
+      ],
+      "row_count": 44720,
+      "schema_fingerprint": "b68f64d9d583776e448d6d9d840f2acafdf381dbec419cc6c2777801dcb50861"
+    },
+    "metric_definition": {
+      "column_names": [
+        "entity_level",
+        "column_name",
+        "display_name",
+        "description",
+        "data_type",
+        "unit",
+        "higher_is",
+        "filterable",
+        "default_visible",
+        "display_decimals",
+        "numerator_definition",
+        "denominator_definition",
+        "null_definition"
+      ],
+      "column_types": [
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            "window",
+            "top_exact_peptide_frequency"
+          ],
+          "key_min": [
+            "block",
+            "all_call_consensus_sequence_frequency"
+          ],
+          "path": "tables/metric_definition/part-00000.parquet",
+          "row_count": 148,
+          "sha256": "f2c411d793272884b72ffc4adcbe9db4ea36714942259320d496f6672c64c7c2",
+          "size_bytes": 11071
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "entity_level",
+        "column_name"
+      ],
+      "row_count": 148,
+      "schema_fingerprint": "d850b212e6349e08e927016e65a651a21aa79354b1e0419cb7dac5e1f42c0ef0"
+    },
+    "mutation": {
+      "column_names": [
+        "mutation_id",
+        "gene_id",
+        "block_id",
+        "locus_id",
+        "canonical_mutation_id",
+        "reference_residue",
+        "alternate_residue",
+        "aa_position"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            735
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/mutation/part-00000.parquet",
+          "row_count": 735,
+          "sha256": "28300ac28c29a6d348ee4502147b24d5b0ecc2d8b69cd249b4fdecbb1101cf43",
+          "size_bytes": 11979
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "mutation_id"
+      ],
+      "row_count": 735,
+      "schema_fingerprint": "e69e27f745455d0025b97f1daf4ac020b913373ba783b9d79a3050b011420558"
+    },
+    "mutation_metric": {
+      "column_names": [
+        "stratum_id",
+        "mutation_id",
+        "n_samples",
+        "allele_denominator_fractional",
+        "alternate_fractional_count",
+        "mutation_allele_frequency",
+        "sample_presence_count",
+        "sample_presence_fraction",
+        "n_missing",
+        "missing_fraction",
+        "n_unresolved",
+        "unresolved_fraction",
+        "n_non_callable",
+        "non_callable_fraction",
+        "is_observed_in_stratum"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26,
+            735
+          ],
+          "key_min": [
+            1,
+            1
+          ],
+          "path": "tables/mutation_metric/part-00000.parquet",
+          "row_count": 19110,
+          "sha256": "3fc7120937103c92a00a30a260f8738c01bc49d06dd211ad5eab143d84435d45",
+          "size_bytes": 234796
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id",
+        "mutation_id"
+      ],
+      "row_count": 19110,
+      "schema_fingerprint": "384c002f6b48ec8db5db651bc3b2f4084da21e60110851a7056b0a31d5c8ba58"
+    },
+    "sequence": {
+      "column_names": [
+        "sequence_id",
+        "normalization_version",
+        "sequence_text",
+        "call_length",
+        "has_missing",
+        "has_unresolved",
+        "has_mixed",
+        "is_exact_canonical"
+      ],
+      "column_types": [
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            96682
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/sequence/part-00000.parquet",
+          "row_count": 96682,
+          "sha256": "513208ee7adff0d5229ed0a9a09a1826b1e1854928c0bde7699ea8c54cd9aac8",
+          "size_bytes": 800798
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "sequence_id"
+      ],
+      "row_count": 96682,
+      "schema_fingerprint": "3fcd065c2ce38dcb5d3dcfdd0432b2136a654f1f4fb99f1f0b984bb19b759e63"
+    },
+    "source_file": {
+      "column_names": [
+        "source_file_id",
+        "run_id",
+        "logical_role",
+        "relative_path",
+        "size_bytes",
+        "modified_at_utc",
+        "sha256",
+        "row_count"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            6
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/source_file/part-00000.parquet",
+          "row_count": 6,
+          "sha256": "febd124cc15a835c969d79c9dee2a472e80ad26cfb2d354b5c97bb92314a2052",
+          "size_bytes": 4519
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "source_file_id"
+      ],
+      "row_count": 6,
+      "schema_fingerprint": "dc25478c035cc303de88b40e25749b387861e3e3939f87628dbe87953d88dffe"
+    },
+    "stratum": {
+      "column_names": [
+        "stratum_id",
+        "stratum_type",
+        "stratum_value",
+        "display_label",
+        "n_samples",
+        "small_sample_warning",
+        "is_default",
+        "sort_order"
+      ],
+      "column_types": [
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/stratum/part-00000.parquet",
+          "row_count": 26,
+          "sha256": "f1ba3066c3b44b7284003a87d2fbd9cc58e0f66050f2b9a4dacc518a5440e47e",
+          "size_bytes": 4038
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id"
+      ],
+      "row_count": 26,
+      "schema_fingerprint": "99826729157273714df1b0c69b53a93f548bf332fa39efa3a95c3f414b256e63"
+    },
+    "stratum_relationship": {
+      "column_names": [
+        "parent_stratum_id",
+        "child_stratum_id",
+        "relationship_type"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1,
+            26,
+            "geographic_scope"
+          ],
+          "key_min": [
+            1,
+            2,
+            "geographic_scope"
+          ],
+          "path": "tables/stratum_relationship/part-00000.parquet",
+          "row_count": 25,
+          "sha256": "bb70c2638adf4333a48cedff0f3c3c3be7ba160bf0cf5b8c7d6c6fd609905fff",
+          "size_bytes": 1577
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "parent_stratum_id",
+        "child_stratum_id",
+        "relationship_type"
+      ],
+      "row_count": 25,
+      "schema_fingerprint": "018e49f28b5f9818244e7f89d6336c03a4b9e379a6d3921f4e2357247cd25fcc"
+    },
+    "structure": {
+      "column_names": [
+        "structure_id",
+        "gene_id",
+        "source_type",
+        "accession",
+        "model_version",
+        "title",
+        "experimental_method",
+        "resolution_angstrom",
+        "source_url",
+        "citation_doi",
+        "license",
+        "asset_relative_path",
+        "asset_sha256",
+        "retrieved_at_utc"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "REAL",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            6
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/structure/part-00000.parquet",
+          "row_count": 6,
+          "sha256": "f830dc512386f41cb2f1dca99a2546edac3f2da343404c1cb0fa8ddacc1a1772",
+          "size_bytes": 7561
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "structure_id"
+      ],
+      "row_count": 6,
+      "schema_fingerprint": "38e38c44dbeda716593c2b0d03ec9ebbd6356ae3673224446aa749a0c45d8a52"
+    },
+    "structure_chain": {
+      "column_names": [
+        "structure_chain_id",
+        "structure_id",
+        "chain_id",
+        "entity_id",
+        "sequence_length",
+        "mapped_project_start",
+        "mapped_project_end",
+        "mapped_residue_count",
+        "mapping_identity",
+        "mapping_coverage",
+        "mapping_status"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            9
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/structure_chain/part-00000.parquet",
+          "row_count": 9,
+          "sha256": "05e6a9c7a1ed4737e44d3a2f313317f9667779bd6a769c42260e49c56ae9ff62",
+          "size_bytes": 5014
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "structure_chain_id"
+      ],
+      "row_count": 9,
+      "schema_fingerprint": "32ffbc7d0e4c465c1a24a9c7cc3750db5783659db8eb8582f7b893c6dd822e97"
+    },
+    "structure_residue_map": {
+      "column_names": [
+        "structure_chain_id",
+        "project_locus_id",
+        "structure_residue_number",
+        "insertion_code",
+        "structure_residue",
+        "project_reference_residue",
+        "mapping_status",
+        "confidence_value"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "TEXT",
+        "REAL"
+      ],
+      "files": [
+        {
+          "key_max": [
+            9,
+            1720
+          ],
+          "key_min": [
+            1,
+            20
+          ],
+          "path": "tables/structure_residue_map/part-00000.parquet",
+          "row_count": 3245,
+          "sha256": "048526c680346adfffc80f183eef19d30aedefb48146c816fbbc347fc7152b02",
+          "size_bytes": 23713
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "structure_chain_id",
+        "project_locus_id"
+      ],
+      "row_count": 3245,
+      "schema_fingerprint": "42dcdfd95a24337c671c3f27277ad64ecfa75621f0aa874dfa26119e5185b142"
+    },
+    "window": {
+      "column_names": [
+        "window_id",
+        "gene_id",
+        "block_id",
+        "window_size",
+        "aa_start",
+        "aa_end",
+        "block_offset_start",
+        "block_offset_end",
+        "reference_sequence_id",
+        "display_key"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "TEXT"
+      ],
+      "files": [
+        {
+          "key_max": [
+            34140
+          ],
+          "key_min": [
+            1
+          ],
+          "path": "tables/window/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "b51952fb9a43c9ac1704d20d0e6dd7caac46c2834baabf032e0aa04ec49a7973",
+          "size_bytes": 342957
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "window_id"
+      ],
+      "row_count": 34140,
+      "schema_fingerprint": "1d8473d7b89c7c2fba12a67bdbb3667aaa12c7a64009f35e4c2791c65539b44f"
+    },
+    "window_metric": {
+      "column_names": [
+        "stratum_id",
+        "window_id",
+        "allelic_consensus_sequence_id",
+        "top_exact_peptide_sequence_id",
+        "modal_all_call_sequence_id",
+        "all_call_consensus_sequence_id",
+        "n_samples",
+        "n_total_calls",
+        "n_missing_calls",
+        "n_unresolved_calls",
+        "n_non_callable_calls",
+        "n_callable_calls",
+        "n_mixed_callable_calls",
+        "mean_sample_call_rate",
+        "mean_sample_missing_fraction",
+        "mean_sample_unresolved_fraction",
+        "mean_sample_non_callable_fraction",
+        "min_locus_call_rate",
+        "mean_sample_mixed_fraction_callable",
+        "pooled_mixed_fraction_callable",
+        "max_locus_mixed_fraction_callable",
+        "fraction_samples_missing_ge_1",
+        "fraction_samples_missing_ge_2",
+        "fraction_samples_missing_ge_5",
+        "fraction_samples_missing_gt_5",
+        "fraction_samples_non_callable_ge_1",
+        "fraction_samples_non_callable_ge_2",
+        "fraction_samples_non_callable_ge_5",
+        "fraction_samples_non_callable_gt_5",
+        "fraction_samples_mixed_ge_1",
+        "fraction_samples_mixed_ge_2",
+        "fraction_samples_mixed_ge_5",
+        "fraction_samples_mixed_gt_5",
+        "n_fully_callable_peptide_observations",
+        "n_exact_peptide_observations",
+        "fraction_sample_peptides_exact",
+        "n_non_exact_peptide_observations",
+        "fraction_sample_peptides_non_exact",
+        "n_unique_all_call_patterns",
+        "n_unique_exact_peptides",
+        "fraction_unique_patterns_exact",
+        "n_singleton_exact_peptides",
+        "singleton_fraction_unique_exact",
+        "allelic_consensus_exact_frequency",
+        "top_exact_peptide_frequency",
+        "modal_all_call_sequence_frequency",
+        "all_call_consensus_sequence_frequency",
+        "reference_peptide_frequency_exact",
+        "top_1_cumulative_frequency",
+        "top_2_cumulative_frequency",
+        "top_3_cumulative_frequency",
+        "top_5_cumulative_frequency",
+        "top_10_cumulative_frequency",
+        "peptide_diversity_hd",
+        "shannon_diversity",
+        "effective_peptides_shannon",
+        "effective_peptides_simpson",
+        "peptide_frequency_gini",
+        "pielou_evenness",
+        "mean_pairwise_aa_distance",
+        "mean_normalized_pairwise_aa_distance",
+        "n_sites_polymorphic_any",
+        "fraction_sites_polymorphic_any",
+        "n_sites_polymorphic_ge_0_01",
+        "fraction_sites_polymorphic_ge_0_01",
+        "n_sites_polymorphic_ge_0_05",
+        "fraction_sites_polymorphic_ge_0_05",
+        "n_sites_with_singleton_residue",
+        "fraction_sites_with_singleton_residue"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL",
+        "INTEGER",
+        "REAL"
+      ],
+      "files": [
+        {
+          "key_max": [
+            1,
+            34140
+          ],
+          "key_min": [
+            1,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=1/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "371d494fe580d79910f0011b719941a9f3d355c0387543b4212c93f9c98a7ab0",
+          "size_bytes": 4743526
+        },
+        {
+          "key_max": [
+            2,
+            34140
+          ],
+          "key_min": [
+            2,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=2/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "6e07baf0c8977a5ba860c3e95ce0d73f088e586e398fba4613e79c0a312b7f6f",
+          "size_bytes": 3070106
+        },
+        {
+          "key_max": [
+            3,
+            34140
+          ],
+          "key_min": [
+            3,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=3/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "1b3ff3282b0cea311eab40c6d84d0702456183048b07849ad4e595258d052efd",
+          "size_bytes": 3681696
+        },
+        {
+          "key_max": [
+            4,
+            34140
+          ],
+          "key_min": [
+            4,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=4/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "16003030e8f85da21ac8810b1292473e8531bd4151cc825b6443ca2d4faa2f8f",
+          "size_bytes": 1806662
+        },
+        {
+          "key_max": [
+            5,
+            34140
+          ],
+          "key_min": [
+            5,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=5/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "2baad56b3dcae0ca0fe8ddc3d182ad42514661212680353004ff202892e3373a",
+          "size_bytes": 4214864
+        },
+        {
+          "key_max": [
+            6,
+            34140
+          ],
+          "key_min": [
+            6,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=6/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "7c2b89658d8c964d4b447e597e9f866fe79fb63766625de72bcd1a5f4ec58d84",
+          "size_bytes": 1101113
+        },
+        {
+          "key_max": [
+            7,
+            34140
+          ],
+          "key_min": [
+            7,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=7/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "eb118396ef86df14aeb0688e165ae669936da5abd45972ab3dac1fb1b71e40a8",
+          "size_bytes": 799471
+        },
+        {
+          "key_max": [
+            8,
+            34140
+          ],
+          "key_min": [
+            8,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=8/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "40d2c88848af4ffdd079efd01f038fca1d5f22204e2f48c081d009e7373dd663",
+          "size_bytes": 1323208
+        },
+        {
+          "key_max": [
+            9,
+            34140
+          ],
+          "key_min": [
+            9,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=9/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "285d5b0a5f89595c979751cb92eba09cc59d2cc84d9e1052206bbd1d8925508d",
+          "size_bytes": 909308
+        },
+        {
+          "key_max": [
+            10,
+            34140
+          ],
+          "key_min": [
+            10,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=10/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "1919da494de82b77a1989218c8b325edd04a515adcb1d91bacc9a703b477f092",
+          "size_bytes": 3070106
+        },
+        {
+          "key_max": [
+            11,
+            34140
+          ],
+          "key_min": [
+            11,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=11/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "e7e771bfd31312b11cbed9c1173a29ca95f7702eb82167dcdd8e450a231b7149",
+          "size_bytes": 851078
+        },
+        {
+          "key_max": [
+            12,
+            34140
+          ],
+          "key_min": [
+            12,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=12/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "f6cf6230eec3bc5280d6c9361eb90bcad097d2574c5e12a10f5a3349742683b5",
+          "size_bytes": 931126
+        },
+        {
+          "key_max": [
+            13,
+            34140
+          ],
+          "key_min": [
+            13,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=13/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "9f9a077ab2503de70e184e65ad3915d553bf4100afcbb8a2f81a5e60a48a3633",
+          "size_bytes": 2864872
+        },
+        {
+          "key_max": [
+            14,
+            34140
+          ],
+          "key_min": [
+            14,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=14/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "34848016ce26f93985d94fd38316a8da01bbc8ddfbbffedcdb673981177a5090",
+          "size_bytes": 4138381
+        },
+        {
+          "key_max": [
+            15,
+            34140
+          ],
+          "key_min": [
+            15,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=15/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "98a6d90e5ed59259002cad15881ef0314f718c79a3261ec6e56c60c3d89aa35d",
+          "size_bytes": 1197998
+        },
+        {
+          "key_max": [
+            16,
+            34140
+          ],
+          "key_min": [
+            16,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=16/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "bffb818f2d0fa5ffa21b640c78562219e88d017a8343f49b07a2015a1005a192",
+          "size_bytes": 2062280
+        },
+        {
+          "key_max": [
+            17,
+            34140
+          ],
+          "key_min": [
+            17,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=17/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "d46ea412117b7a1bd540f5b706db560c82ef12dfc5d79bf29249a9029eece622",
+          "size_bytes": 805622
+        },
+        {
+          "key_max": [
+            18,
+            34140
+          ],
+          "key_min": [
+            18,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=18/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "87f56391942822bb4a09cd3eae04d34c6e83982f47b78b11dd118f74258a7e5f",
+          "size_bytes": 1523680
+        },
+        {
+          "key_max": [
+            19,
+            34140
+          ],
+          "key_min": [
+            19,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=19/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "05351c56e3d3ab5b061f33b17c5067f40e6b9047f12d1c5fe6abcde23b1126af",
+          "size_bytes": 3068599
+        },
+        {
+          "key_max": [
+            20,
+            34140
+          ],
+          "key_min": [
+            20,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=20/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "37d56f0b3a92429965fc65ae77dcd3e2a6263df89168337fa0ebd09e98f7117e",
+          "size_bytes": 1188944
+        },
+        {
+          "key_max": [
+            21,
+            34140
+          ],
+          "key_min": [
+            21,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=21/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "c68a8925fbd5d62155b14fdc699506d0ad74a8afa58c15ba982b0b062c94c6d6",
+          "size_bytes": 2906471
+        },
+        {
+          "key_max": [
+            22,
+            34140
+          ],
+          "key_min": [
+            22,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=22/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "8bcaac37322b13310c16e72a65035892486bd490a2b9b3396e7da246b9ab99db",
+          "size_bytes": 2352917
+        },
+        {
+          "key_max": [
+            23,
+            34140
+          ],
+          "key_min": [
+            23,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=23/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "faf5dfd473991a488eb668a57554b1d032f261cc07f772c0191a8181f0abbf6a",
+          "size_bytes": 1102150
+        },
+        {
+          "key_max": [
+            24,
+            34140
+          ],
+          "key_min": [
+            24,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=24/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "d2762ea7cfe1b53ccb93eea4619fc584e3b0f9b8e66602185fc4e4b1c196dcb7",
+          "size_bytes": 1688737
+        },
+        {
+          "key_max": [
+            25,
+            34140
+          ],
+          "key_min": [
+            25,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=25/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "2fc145cf9141500c1ec507c61d5c092939c5aa390dd501dfbacf2ce3f0d0b303",
+          "size_bytes": 2350749
+        },
+        {
+          "key_max": [
+            26,
+            34140
+          ],
+          "key_min": [
+            26,
+            1
+          ],
+          "path": "tables/window_metric/stratum_id=26/part-00000.parquet",
+          "row_count": 34140,
+          "sha256": "4be2b7682b373e211efb8f150073316afb2929bf424029988c9c11c834d81ab0",
+          "size_bytes": 815553
+        }
+      ],
+      "partition_columns": [
+        "stratum_id"
+      ],
+      "primary_key": [
+        "stratum_id",
+        "window_id"
+      ],
+      "row_count": 887640,
+      "schema_fingerprint": "31864f21e752a58096ee39e9b33aa79066c0f09a5e6916672c33c9c85f4bb098"
+    },
+    "window_metric_bounds": {
+      "column_names": [
+        "stratum_id",
+        "window_size",
+        "metric_name",
+        "n_non_null",
+        "minimum",
+        "q01",
+        "q05",
+        "median",
+        "q95",
+        "q99",
+        "maximum"
+      ],
+      "column_types": [
+        "INTEGER",
+        "INTEGER",
+        "TEXT",
+        "INTEGER",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL",
+        "REAL"
+      ],
+      "files": [
+        {
+          "key_max": [
+            26,
+            30,
+            "top_exact_peptide_frequency"
+          ],
+          "key_min": [
+            1,
+            7,
+            "all_call_consensus_sequence_frequency"
+          ],
+          "path": "tables/window_metric_bounds/part-00000.parquet",
+          "row_count": 39312,
+          "sha256": "39e56d79d7991aa05bdc88ece5b04d9244f62a761341bd0806ca9796485f63a5",
+          "size_bytes": 670203
+        }
+      ],
+      "partition_columns": [],
+      "primary_key": [
+        "stratum_id",
+        "window_size",
+        "metric_name"
+      ],
+      "row_count": 39312,
+      "schema_fingerprint": "2ad19b29622ab670b7b6076e68c1f166ac6996346f25efd208200bda08fcee64"
+    }
+  },
+  "total_size_bytes": 59627648
+}

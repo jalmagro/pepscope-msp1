@@ -1,0 +1,27 @@
+# Python bytecode and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local environments and packaging outputs
+.venv/
+venv/
+build/
+dist/
+*.egg-info/
+
+# Local Streamlit secrets and DuckDB spill files
+.streamlit/secrets.toml
+*.duckdb
+*.duckdb.wal
+.duckdb/
+
+# Editor and operating-system noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

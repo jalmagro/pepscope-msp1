@@ -1,0 +1,84 @@
+{
+  "preset_schema_version": "1.0.0",
+  "database_schema_compatibility": "2.x",
+  "scientific_caution": "Remember that you can add or remove filters.",
+  "order": ["very_strict", "strict", "flexible", "loose"],
+  "presets": {
+    "very_strict": {
+      "label": "Very strict",
+      "version": "1.0.0",
+      "description": "A single dominant peptide and very little diversity with very high callability and support.",
+      "constraints": [
+        {"metric": "mean_sample_call_rate", "direction": "min", "value": 0.98},
+        {"metric": "min_locus_call_rate", "direction": "min", "value": 0.95},
+        {"metric": "fraction_sample_peptides_exact", "direction": "min", "value": 0.90},
+        {"metric": "$conservation_frequency", "direction": "min", "value": 0.95},
+        {"metric": "mean_sample_missing_fraction", "direction": "max", "value": 0.02},
+        {"metric": "mean_sample_mixed_fraction_callable", "direction": "max", "value": 0.005},
+        {"metric": "max_locus_mixed_fraction_callable", "direction": "max", "value": 0.01},
+        {"metric": "fraction_samples_missing_ge_1", "direction": "max", "value": 0.10},
+        {"metric": "peptide_diversity_hd", "direction": "max", "value": 0.10},
+        {"metric": "effective_peptides_simpson", "direction": "max", "value": 1.10},
+        {"metric": "mean_pairwise_aa_distance", "direction": "max", "value": 0.10},
+        {"metric": "fraction_sites_polymorphic_ge_0_01", "direction": "max", "value": 0.00}
+      ]
+    },
+    "strict": {
+      "label": "Strict",
+      "version": "1.0.0",
+      "description": "High callability and support with a strongly dominant peptide and limited diversity.",
+      "constraints": [
+        {"metric": "mean_sample_call_rate", "direction": "min", "value": 0.95},
+        {"metric": "min_locus_call_rate", "direction": "min", "value": 0.90},
+        {"metric": "fraction_sample_peptides_exact", "direction": "min", "value": 0.80},
+        {"metric": "$conservation_frequency", "direction": "min", "value": 0.90},
+        {"metric": "mean_sample_missing_fraction", "direction": "max", "value": 0.05},
+        {"metric": "mean_sample_mixed_fraction_callable", "direction": "max", "value": 0.01},
+        {"metric": "max_locus_mixed_fraction_callable", "direction": "max", "value": 0.03},
+        {"metric": "fraction_samples_missing_ge_1", "direction": "max", "value": 0.20},
+        {"metric": "peptide_diversity_hd", "direction": "max", "value": 0.25},
+        {"metric": "effective_peptides_simpson", "direction": "max", "value": 1.50},
+        {"metric": "mean_pairwise_aa_distance", "direction": "max", "value": 0.25},
+        {"metric": "fraction_sites_polymorphic_ge_0_01", "direction": "max", "value": 0.15}
+      ]
+    },
+    "flexible": {
+      "label": "Flexible",
+      "version": "1.0.0",
+      "description": "Moderate evidence and conservation thresholds suitable for broader candidate discovery.",
+      "constraints": [
+        {"metric": "mean_sample_call_rate", "direction": "min", "value": 0.90},
+        {"metric": "min_locus_call_rate", "direction": "min", "value": 0.80},
+        {"metric": "fraction_sample_peptides_exact", "direction": "min", "value": 0.65},
+        {"metric": "$conservation_frequency", "direction": "min", "value": 0.75},
+        {"metric": "mean_sample_missing_fraction", "direction": "max", "value": 0.10},
+        {"metric": "mean_sample_mixed_fraction_callable", "direction": "max", "value": 0.025},
+        {"metric": "max_locus_mixed_fraction_callable", "direction": "max", "value": 0.08},
+        {"metric": "fraction_samples_missing_ge_1", "direction": "max", "value": 0.40},
+        {"metric": "peptide_diversity_hd", "direction": "max", "value": 0.50},
+        {"metric": "effective_peptides_simpson", "direction": "max", "value": 2.50},
+        {"metric": "mean_pairwise_aa_distance", "direction": "max", "value": 1.00},
+        {"metric": "fraction_sites_polymorphic_ge_0_01", "direction": "max", "value": 0.30}
+      ]
+    },
+    "loose": {
+      "label": "Loose",
+      "version": "1.0.0",
+      "description": "Permissive screening that retains windows with usable but less complete or less conserved evidence.",
+      "constraints": [
+        {"metric": "mean_sample_call_rate", "direction": "min", "value": 0.80},
+        {"metric": "min_locus_call_rate", "direction": "min", "value": 0.60},
+        {"metric": "fraction_sample_peptides_exact", "direction": "min", "value": 0.40},
+        {"metric": "$conservation_frequency", "direction": "min", "value": 0.50},
+        {"metric": "mean_sample_missing_fraction", "direction": "max", "value": 0.20},
+        {"metric": "mean_sample_mixed_fraction_callable", "direction": "max", "value": 0.05},
+        {"metric": "max_locus_mixed_fraction_callable", "direction": "max", "value": 0.20},
+        {"metric": "fraction_samples_missing_ge_1", "direction": "max", "value": 0.75},
+        {"metric": "peptide_diversity_hd", "direction": "max", "value": 0.80},
+        {"metric": "effective_peptides_simpson", "direction": "max", "value": 6.00},
+        {"metric": "mean_pairwise_aa_distance", "direction": "max", "value": 3.00},
+        {"metric": "fraction_sites_polymorphic_ge_0_01", "direction": "max", "value": 0.60}
+      ]
+    }
+  }
+}

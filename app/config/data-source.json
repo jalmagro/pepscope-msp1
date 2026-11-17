@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0.0",
+  "backend": "parquet_duckdb",
+  "artifact": "../../data/database/msp1-africa-metrics-v2-parquet/artifact.json",
+  "artifact_root": "../..",
+  "expected_total_size_bytes": 59627648,
+  "expected_dataset_sha256": "97e46d356b4b035946e7391289a15674d131c6031b0093c4243b55246a2adf61",
+  "duckdb": {
+    "memory_limit": "256MB",
+    "threads": 1,
+    "temp_directory": "/tmp/aa_metrics_duckdb",
+    "max_temp_directory_size": "1GB"
+  }
+}

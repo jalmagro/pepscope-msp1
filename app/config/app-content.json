@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.3.0",
+  "app": {
+    "kicker": "Amino-acid diversity explorer",
+    "title": "MSP1 PepScope",
+    "title_template": "{app_title} - {page_title}",
+    "favicon": "🧬",
+    "favicon_path": null,
+    "logo_path": "../assets/branding/pepscope-logo.png",
+    "logo_icon_path": null,
+    "sidebar_intro": "Explore amino-acid conservation and diversity across MSP1.",
+    "current_configuration_label": "Current configuration"
+  },
+  "pages": {
+    "Block overview": {
+      "title": "Block Overview",
+      "lead": "Use this page to get a clear overview of the selected block, compare its main haplotypes, inspect mutations and amino-acid composition, and place the block in the 3D protein structure. MSP1 PepScope is a prototype for exploring amino-acid conservation and diversity across MSP1. ",
+      "icon_path": "../assets/icons/pepscope_page_block_overview.png",
+      "icon_alt": "Block overview page"
+    },
+    "Locus tracks": {
+      "title": "Locus Tracks",
+      "lead": "Use this page to check callability, conservation, variation, and diversity at each amino-acid position across the selected block. MSP1 PepScope is a prototype for exploring amino-acid conservation and diversity across MSP1.",
+      "icon_path": "../assets/icons/pepscope_page_locus_tracks.png",
+      "icon_alt": "Locus tracks page"
+    },
+    "Window tracks": {
+      "title": "Peptide Window Tracks",
+      "lead": "Use this page to scan overlapping peptide windows, compare their data quality and diversity, and inspect the representative sequences for any window you are interested in. MSP1 PepScope is a prototype for exploring amino-acid conservation and diversity across MSP1.",
+      "icon_path": "../assets/icons/pepscope_page_window_tracks.png",
+      "icon_alt": "Peptide window tracks page"
+    },
+    "Explore a region": {
+      "title": "Explore a Region",
+      "lead": "Use this page when you already have an MSP1 position or interval in mind and want to find every peptide window that overlaps or fully contains it. MSP1 PepScope is a prototype for exploring amino-acid conservation and diversity across MSP1.",
+      "icon_path": "../assets/icons/pepscope_page_explore_region.png",
+      "icon_alt": "Region explorer page"
+    },
+    "Filter & export": {
+      "title": "Filter & Export",
+      "lead": "Use this page to combine conservation and data-quality rules, review why candidates were retained, and download a reproducible table of filtered peptide windows. MSP1 PepScope is a prototype for exploring amino-acid conservation and diversity across MSP1.",
+      "icon_path": "../assets/icons/pepscope_page_filter_export.png",
+      "icon_alt": "Peptide filtering and export page"
+    },
+    "About & limitations": {
+      "title": "About & Limitations",
+      "lead": "Use this page to understand the data, database contents, protein metadata, assumptions, and limitations that should guide interpretation of the other pages. MSP1 PepScope is a prototype for exploring amino-acid conservation and diversity across MSP1.",
+      "icon_path": "../assets/icons/pepscope_page_about_limitations.png",
+      "icon_alt": "About and limitations page"
+    }
+  },
+  "sections": {
+    "block_overview": {
+      "heading": "Block overview",
+      "intro": "This section gives an overall view of the amino-acid haplotypes observed across the selected MSP1 block. Quality and callability metrics use all selected QC-pass samples, while haplotype frequencies and diversity metrics use only fully resolved haplotypes with one unambiguous amino acid (i.e., not missing or mixed) at every position. The number of complete haplotypes contributing to these calculations is shown separately. Two different consensus sequences are also provided to summarize the most common amino acid at each position (one using only fully resolved haplotypes and another one that considers all haplotypes and can include missing calls)."
+    },
+    "representative_block_sequences": {
+      "heading": "Representative block sequences",
+      "intro": "These sequences summarize the main patterns seen across the selected block. A complete haplotype contains only unambiguous amino acid calls at every position. The standard consensus is built from fully callable haplotypes, including fractional contributions from  mixed (het) calls. Consensus (all) also includes missing calls when identifying the most common state at each position. Top haplotype shows the most common complete haplotype whereas Top haplotype (all) instead shows the most common complete observed pattern across all samples, so it may contain missing, unresolved, or mixed calls."
+    },
+    "locus_tracks": {
+      "heading": "Locus-level tracks",
+      "intro": "Explore conservation, diversity, and data quality one amino-acid position at a time across the selected block. Each point corresponds to an absolute 3D7 amino-acid coordinate. Quality metrics use all selected samples, while frequencies and diversity are calculated from non-missing calls. When a sample contains a mixed (het) call, its contribution is shared between the contained residues rather than treated as a separate amino-acid state."
+    },
+    "window_tracks": {
+      "heading": "Sliding-window tracks",
+      "intro": "Explore how conservation and diversity change across overlapping peptide windows in the block. Each point represents one peptide window and is positioned at its first amino-acid coordinate. Hovering shows the full coordinate range, representative sequences, and the number of complete observations supporting the window. Windows move one amino acid at a time and never extend beyond the selected block."
+    },
+    "peptide_sequence_inspector": {
+      "heading": "Peptide sequence inspector",
+      "intro": "Select a peptide window to compare the sequences that best summarize the data at those coordinates: the 3D7 reference, the fully callable consensus, the all-sample consensus (including peptides with missing or het calls), the most common complete peptide, and the most common pattern across all samples. Frequencies are shown alongside the aligned sequences."
+    },
+    "region_explorer": {
+      "heading": "Explore peptides overlapping a region",
+      "intro": "Use this section to find peptide windows that overlap a particular amino-acid position or interval. Enter an inclusive start and end coordinate or use the same coordinate for both to search a single position. You can return every peptide that overlaps any part of the selected region, or restrict the results to peptides that fully contain it."
+    },
+    "matching_peptide_inspector": {
+      "heading": "Matching peptide inspector",
+      "intro": "Choose one of the matching peptide windows to inspect the sequence variation at those coordinates in more detail. The reference sequence, fully callable consensus, all-sample consensus (including peptides with missing or het calls), most common complete peptide, and most common all-sample pattern are shown side by side for direct comparison."
+    },
+    "mutation_explorer": {
+      "heading": "Mutations in this interval",
+      "intro": "See which non-reference amino-acid variants occur within the selected interval and how their frequencies differ between geographic groups and populations. The currently selected group is shown first for easier comparison. Optional missingness columns help distinguish real frequency differences from loci where sequence information is weak (i.e., incomplete)."
+    },
+    "residue_logo": {
+      "heading": "AA composition",
+      "intro": "This sequence logo shows the amino-acid composition at each position using all selected samples. Residues heights represent their sample-normalized frequencies. Mixed calls contribute proportionally to each contained amino acid, while grey space represents missing or unresolved evidence so that gaps in sequence information remain visible."
+    },
+    "structure_context": {
+      "heading": "3D structure context (experimental)",
+      "intro": "Place the selected MSP1 block or peptide in its 3D structural context using a reference structure. The selected region is highlighted in tomato. Where a reviewed sequence-to-structure mapping is available, amino-acid differences in the most common complete sequence (only considering complete haplotypes) are highlighted in gold. Notice this an experimental tool that still requires careful testing and validation."
+    },
+    "filter_explorer": {
+      "heading": "Filter conserved peptide candidates",
+      "intro": "Use the filters to define what constraints a  peptide should meet for the selected sample group, gene block, and peptide length. Presets just provide useful starting points but can be changed freely (depending on your specific use case). When several filters are active, a peptide must pass all of them to be retained (and missing metric values do not pass an active filter). Results are updated only when you press Apply filters."
+    },
+    "filter_diagnostics": {
+      "heading": "Filtering location and diagnostics",
+      "intro": "Review where retained peptide windows occur across the selected block, then compare their conservation with a supporting quality, diversity, or evidence metric. Retained and excluded windows remain visible together so the effect of the submitted rules can be interpreted in context."
+    },
+    "conservation_target": {
+      "heading": "How the conservation target works",
+      "intro": "This selection decides which peptide frequency is compared with the preset's minimum conservation threshold (it changes the metric it uses in the filtering). For example, if the threshold is 0.90, a window passes this rule only when the selected frequency is at least 90%. It does not change the other quality or diversity filters, the selected samples, or the peptide length.\n\nAll three frequencies use only **complete peptide observations**: samples with one unambiguous amino acid at every position in the window. A sample with a missing, unresolved, or mixed call anywhere in that window is excluded from these frequency calculations. Always interpret the result together with the number or fraction of complete observations.\n\n- **Top complete peptide** asks whether any single observed complete peptide dominates the window. The sequence is allowed to differ from 3D7. For example, if 90 complete observations contain 54 copies of peptide A, 20 of peptide B, and 16 of other peptides, the top-complete frequency is 54/90 = 60%. With a 90% threshold, this window fails.\n- **3D7/reference peptide** asks how many complete observations exactly match the 3D7 sequence across the entire window. For example, if 72 of 90 complete observations match 3D7, the reference frequency is 72/90 = 80%. The other 18 observations can contain one or many alternative peptides; this metric only measures exact agreement with 3D7.\n- **Allelic consensus peptide** first creates a sequence by selecting the most frequent amino acid independently at each position, then asks how many complete observations exactly match that assembled sequence. Callable mixed calls contribute fractionally when choosing the residue at each position, while missing and unresolved calls do not become alleles. For example, if the consensus peptide is `AKL` and 72 of 90 complete observations are exactly `AKL`, the frequency is 80%. Because the sequence is assembled position by position, it can be a mosaic that no sample carries; in that case its exact frequency is 0%.\n\nThese targets answer different questions: **top complete** finds the strongest observed population sequence, **3D7/reference** tests representation by the reference form, and **allelic consensus** tests representation by the site-wise majority sequence."
+    },
+    "about": {
+      "heading": "About",
+      "intro": "MSP1 PepScope brings together precomputed conservation, diversity, and data-quality metrics from QC-pass MSP1 amino-acid calls derived from the MalariaGEN Pf8 dataset (https://malariagen.net/resource/36/). It is intended to help explore the data, check candidates, and prioritize potentially conserved vaccine targets. It is a screening and exploration tool, not a prediction of vaccine efficacy. This is a prototype that is still under development, please contact jacob.almagro-garcia@lstmed.ac.uk with any questions or feedback or if you would like to use the tool for your own research."
+    },
+    "metric_guide": {
+      "heading": "Metric guide: definitions and examples",
+      "intro": "Use this guide when you want to understand exactly what a metric is measuring and how to interpret it. Complete-sequence metrics use only sequences with no misisng data, whereas all-sample patterns may also contain missing, unresolved, or mixed calls. For allele frequency calculations, a mixed call such as [A/V] contributes half to A and half to V rather than being treated as a new allele. Conservation metrics should always be considered alongside callability or missingness, because an apparently conserved region supported by poor sequence data (i.e., with high levels of missingness) can be misleading. The examples are illustrative and are intended to make each metric easier to interpret."
+    }
+  }
+}
