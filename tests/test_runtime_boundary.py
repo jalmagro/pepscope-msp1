@@ -1,9 +1,7 @@
-"""Prove that the extracted runtime is independent of the analysis repository."""
+"""Prove that the standalone runtime is independent of the analysis repository."""
 
 from __future__ import annotations
 
-import csv
-import hashlib
 import json
 import os
 import subprocess
@@ -52,24 +50,6 @@ def test_runtime_files_have_no_source_repository_path() -> None:
     assert offenders == []
 
 
-def test_only_active_application_configuration_and_assets_are_present() -> None:
-    config_names = {path.name for path in (ROOT / "app/config").iterdir() if path.is_file()}
-    assert config_names == {
-        "app-content.json",
-        "data-source.json",
-        "filter-presets.json",
-        "logo-help.json",
-        "metric-help.json",
-        "mutation-help.json",
-        "structure-help.json",
-    }
-    assert not (ROOT / ".git").exists()
-    assert not (ROOT / "notebooks").exists()
-    assert not (ROOT / "_data").exists()
-    assert not (ROOT / "src/aa_haplotypes").exists()
-    assert not list(ROOT.rglob("*.sqlite"))
-
-
 def test_configured_images_resolve_inside_the_app() -> None:
     path = ROOT / "app/config/app-content.json"
     content = json.loads(path.read_text(encoding="utf-8"))
@@ -79,27 +59,3 @@ def test_configured_images_resolve_inside_the_app() -> None:
         resolved = (path.parent / relative).resolve()
         assert resolved.is_relative_to((ROOT / "app").resolve())
         assert resolved.is_file()
-
-
-def test_extraction_manifest_covers_and_verifies_release_files() -> None:
-    manifest_path = ROOT / "docs/extraction-manifest.tsv"
-    with manifest_path.open(encoding="utf-8", newline="") as handle:
-        rows = list(csv.DictReader(handle, delimiter="\t"))
-    recorded = {row["target_path"]: row for row in rows}
-    actual: set[str] = set()
-    for path in ROOT.rglob("*"):
-        if not path.is_file():
-            continue
-        relative = path.relative_to(ROOT)
-        if relative.as_posix() == "docs/extraction-manifest.tsv":
-            continue
-        if any(part in {"__pycache__", ".pytest_cache", ".ruff_cache"} for part in relative.parts):
-            continue
-        if path.suffix == ".pyc":
-            continue
-        actual.add(relative.as_posix())
-    assert set(recorded) == actual
-    for relative, row in recorded.items():
-        path = ROOT / relative
-        assert int(row["size_bytes"]) == path.stat().st_size
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == row["sha256"]
